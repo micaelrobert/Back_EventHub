@@ -2,9 +2,7 @@
 
 namespace GestaoEventos.API.Models
 {
-    /// <summary>
-    /// Entidade que representa um ingresso
-    /// </summary>
+
     public class Ingresso : BaseEntity
     {
         [Required(ErrorMessage = "ID do evento é obrigatório")]
@@ -36,7 +34,7 @@ namespace GestaoEventos.API.Models
         [StringLength(500, ErrorMessage = "Motivo deve ter no máximo 500 caracteres")]
         public string? MotivoDevolucao { get; set; }
 
-        // Navegação
+       
         public virtual Evento Evento { get; set; } = null!;
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "j05cN22JrAs=",
+  "dgSpecHash": "8juErZZi4go=",
   "success": true,
-  "projectFilePath": "C:\\Users\\micae\\Desktop\\EventHub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\GestaoEventos.API.csproj",
+  "projectFilePath": "C:\\Users\\micae\\Desktop\\Back_Event_Hub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\GestaoEventos.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\micae\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
     "C:\\Users\\micae\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.0.0\\fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",

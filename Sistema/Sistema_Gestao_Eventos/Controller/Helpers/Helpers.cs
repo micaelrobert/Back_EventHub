@@ -2,14 +2,8 @@
 
 namespace GestaoEventos.API.Helpers
 {
-    /// <summary>
-    /// Métodos auxiliares da aplicação
-    /// </summary>
     public static class Helpers
     {
-        /// <summary>
-        /// Valida se o email tem formato válido
-        /// </summary>
         public static bool IsValidEmail(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -26,24 +20,16 @@ namespace GestaoEventos.API.Helpers
             }
         }
 
-        /// <summary>
-        /// Valida se o telefone tem formato válido (brasileiro)
-        /// </summary>
         public static bool IsValidPhoneBR(string phone)
         {
             if (string.IsNullOrWhiteSpace(phone))
                 return false;
 
-            // Remove caracteres não numéricos
             var cleanPhone = Regex.Replace(phone, @"[^\d]", "");
 
-            // Valida formato brasileiro: (11) 99999-9999 ou (11) 9999-9999
             return cleanPhone.Length == 10 || cleanPhone.Length == 11;
         }
 
-        /// <summary>
-        /// Formata telefone brasileiro
-        /// </summary>
         public static string FormatPhoneBR(string phone)
         {
             if (string.IsNullOrWhiteSpace(phone))
@@ -59,34 +45,22 @@ namespace GestaoEventos.API.Helpers
             };
         }
 
-        /// <summary>
-        /// Verifica se a data é futura
-        /// </summary>
         public static bool IsFutureDate(DateTime date)
         {
             return date > DateTime.Now;
         }
 
-        /// <summary>
-        /// Calcula a diferença em dias entre duas datas
-        /// </summary>
         public static int DaysDifference(DateTime startDate, DateTime endDate)
         {
             return (endDate.Date - startDate.Date).Days;
         }
 
-        /// <summary>
-        /// Gera um código único para o ingresso
-        /// </summary>
         public static string GenerateTicketCode(int eventoId, int ingressoId)
         {
             var timestamp = DateTime.Now.ToString("yyyyMMddHHmmss");
             return $"EVT{eventoId:D4}ING{ingressoId:D6}{timestamp}";
         }
 
-        /// <summary>
-        /// Calcula a porcentagem de ocupação do evento
-        /// </summary>
         public static decimal CalculateOccupancyPercentage(int ingressosVendidos, int capacidadeMaxima)
         {
             if (capacidadeMaxima == 0)
@@ -95,40 +69,28 @@ namespace GestaoEventos.API.Helpers
             return Math.Round((decimal)ingressosVendidos / capacidadeMaxima * 100, 2);
         }
 
-        /// <summary>
-        /// Verifica se o evento pode ser cancelado (pelo menos 24h antes)
-        /// </summary>
         public static bool CanCancelEvent(DateTime eventDate)
         {
             return eventDate > DateTime.Now.AddHours(24);
         }
 
-        /// <summary>
-        /// Verifica se o ingresso pode ser devolvido (pelo menos 2h antes do evento)
-        /// </summary>
         public static bool CanRefundTicket(DateTime eventDate)
         {
             return eventDate > DateTime.Now.AddHours(2);
         }
 
-        /// <summary>
-        /// Sanitiza string removendo caracteres especiais
-        /// </summary>
         public static string SanitizeString(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return string.Empty;
 
             return input.Trim()
-                       .Replace("  ", " ") // Remove espaços duplos
-                       .Replace("\n", " ")
-                       .Replace("\r", " ")
-                       .Replace("\t", " ");
+                        .Replace("  ", " ")
+                        .Replace("\n", " ")
+                        .Replace("\r", " ")
+                        .Replace("\t", " ");
         }
 
-        /// <summary>
-        /// Converte string para formato de título (primeira letra maiúscula)
-        /// </summary>
         public static string ToTitleCase(string input)
         {
             if (string.IsNullOrWhiteSpace(input))

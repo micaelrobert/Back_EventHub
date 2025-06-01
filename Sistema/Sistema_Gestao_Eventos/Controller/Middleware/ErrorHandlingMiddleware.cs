@@ -31,7 +31,7 @@ namespace GestaoEventos.API.Middleware
         {
             context.Response.ContentType = "application/json";
 
-            // ✅ CORREÇÃO: Usar object para evitar conflito de tipos anônimos
+            
             object response;
 
             switch (exception)
@@ -72,7 +72,7 @@ namespace GestaoEventos.API.Middleware
                     response = new
                     {
                         message = "Erro interno do servidor",
-                        details = (string?)null, // ✅ Manter a mesma estrutura
+                        details = (string?)null, 
                         timestamp = DateTime.UtcNow
                     };
                     break;

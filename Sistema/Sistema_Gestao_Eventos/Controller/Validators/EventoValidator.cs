@@ -6,9 +6,7 @@ using GestaoEventos.API.Helpers;
 
 namespace GestaoEventos.API.Validators
 {
-    /// <summary>
-    /// Validador para criação de eventos
-    /// </summary>
+
     public class CriarEventoValidator : AbstractValidator<CriarEventoDto>
     {
         public CriarEventoValidator()
@@ -46,9 +44,7 @@ namespace GestaoEventos.API.Validators
         }
     }
 
-    /// <summary>
-    /// Validador para atualização de eventos
-    /// </summary>
+ 
     public class AtualizarEventoValidator : AbstractValidator<AtualizarEventoDto>
     {
         public AtualizarEventoValidator()

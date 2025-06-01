@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace GestaoEventos.API.DTO.Login // Namespace atualizado
+namespace GestaoEventos.API.DTO.Login 
 {
     public class LoginRequestDto
     {

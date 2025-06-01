@@ -3,9 +3,7 @@ using GestaoEventos.API.Models;
 
 namespace GestaoEventos.API.Models
 {
-    /// <summary>
-    /// Entidade que representa um evento
-    /// </summary>
+   
     public class Evento : BaseEntity
     {
         [Required(ErrorMessage = "Nome é obrigatório")]
@@ -34,10 +32,10 @@ namespace GestaoEventos.API.Models
 
         public bool Ativo { get; set; } = true;
 
-        // Propriedade calculada
+        
         public int IngressosDisponiveis => CapacidadeMaxima - IngressosVendidos;
 
-        // Navegação
+        
         public virtual ICollection<Ingresso> Ingressos { get; set; } = new List<Ingresso>();
     }
 }

@@ -5,9 +5,7 @@ using GestaoEventos.API.Helpers;
 
 namespace GestaoEventos.API.Validators
 {
-    /// <summary>
-    /// Validador para compra de ingressos
-    /// </summary>
+ 
     public class ComprarIngressoValidator : AbstractValidator<ComprarIngressoDto>
     {
         public ComprarIngressoValidator()
@@ -44,9 +42,7 @@ namespace GestaoEventos.API.Validators
         }
     }
 
-    /// <summary>
-    /// Validador para devolução de ingressos
-    /// </summary>
+
     public class DevolverIngressoValidator : AbstractValidator<DevolverIngressoDto>
     {
         public DevolverIngressoValidator()

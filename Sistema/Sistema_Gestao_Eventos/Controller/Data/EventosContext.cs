@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GestaoEventos.API.Models;
-using GestaoEventos.API.Helpers; // Garanta que este using está aqui para o PasswordHasher
+using GestaoEventos.API.Helpers;
 using System;
 
 namespace GestaoEventos.API.Data
@@ -56,9 +56,8 @@ namespace GestaoEventos.API.Data
                 entity.Property(u => u.PasswordHash).IsRequired();
                 entity.Property(u => u.PasswordSalt).IsRequired();
                 entity.Property(u => u.Papel).IsRequired().HasMaxLength(50);
-                // --- ADICIONADO NomeUsuario À CONFIGURAÇÃO DA ENTIDADE ---
                 entity.Property(u => u.NomeUsuario).IsRequired().HasMaxLength(100);
-                entity.HasIndex(u => u.NomeUsuario).IsUnique(); // Nome de usuário também deve ser único
+                entity.HasIndex(u => u.NomeUsuario).IsUnique();
             });
 
             SeedData(modelBuilder);
@@ -120,9 +119,8 @@ namespace GestaoEventos.API.Data
                     PasswordHash = adminPasswordHash,
                     PasswordSalt = adminPasswordSalt,
                     Papel = "Admin",
-                    NomeUsuario = "AdminEventHub" // <<< ADICIONADO NomeUsuario PARA O ADMIN
+                    NomeUsuario = "AdminEventHub"
                 }
-                // O usuário comum será criado via tela de registro
             );
         }
     }

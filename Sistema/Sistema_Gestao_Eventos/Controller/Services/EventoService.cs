@@ -6,9 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace GestaoEventos.API.Services
 {
-    /// <summary>
-    /// Serviço para gerenciamento de eventos
-    /// </summary>
+
     public class EventoService : IEventoService
     {
         private readonly IEventoRepository _eventoRepository;
@@ -136,7 +134,7 @@ namespace GestaoEventos.API.Services
         {
             try
             {
-                // Validações de negócio
+               
                 if (criarEventoDto.DataEvento <= DateTime.Now)
                 {
                     return new ResponseDto<EventoDto>
@@ -194,7 +192,7 @@ namespace GestaoEventos.API.Services
                     };
                 }
 
-                // Validações de negócio
+                
                 if (atualizarEventoDto.DataEvento <= DateTime.Now)
                 {
                     return new ResponseDto<EventoDto>
@@ -215,7 +213,7 @@ namespace GestaoEventos.API.Services
                     };
                 }
 
-                // Atualizar propriedades
+                
                 evento.Nome = atualizarEventoDto.Nome;
                 evento.Descricao = atualizarEventoDto.Descricao;
                 evento.DataEvento = atualizarEventoDto.DataEvento;

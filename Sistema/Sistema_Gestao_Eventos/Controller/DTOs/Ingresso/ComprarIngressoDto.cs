@@ -2,9 +2,6 @@
 
 namespace GestaoEventos.API.DTO
 {
-    /// <summary>
-    /// DTO para retorno de dados do ingresso
-    /// </summary>
     public class IngressoDto
     {
         public int Id { get; set; }
@@ -22,9 +19,6 @@ namespace GestaoEventos.API.DTO
         public EventoDto Evento { get; set; } = default!;
     }
 
-    /// <summary>
-    /// DTO para compra de ingresso (COMPLETO e com validações)
-    /// </summary>
     public class ComprarIngressoDto
     {
         [Required(ErrorMessage = "O ID do evento é obrigatório")]
@@ -47,17 +41,11 @@ namespace GestaoEventos.API.DTO
         public int Quantidade { get; set; }
     }
 
-    /// <summary>
-    /// DTO para devolução de ingresso
-    /// </summary>
     public class DevolverIngressoDto
     {
         public string MotivoDevolucao { get; set; } = string.Empty;
     }
 
-    /// <summary>
-    /// DTO de resposta genérica
-    /// </summary>
     public class ResponseDto<T>
     {
         public bool Sucesso { get; set; }

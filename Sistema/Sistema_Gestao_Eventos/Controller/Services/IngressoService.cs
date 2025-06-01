@@ -10,9 +10,7 @@ using SixLabors.Fonts;
 
 namespace GestaoEventos.API.Services
 {
-    /// <summary>
-    /// Serviço para gerenciamento de ingressos
-    /// </summary>
+ 
     public class IngressoService : IIngressoService
     {
         private readonly IIngressoRepository _ingressoRepository;
@@ -158,7 +156,7 @@ namespace GestaoEventos.API.Services
                     };
                 }
 
-                // Validações de negócio
+                
                 if (!evento.Ativo)
                 {
                     return new ResponseDto<IngressoDto>
@@ -189,7 +187,7 @@ namespace GestaoEventos.API.Services
                     };
                 }
 
-                // Criar ingresso
+                
                 var ingresso = new Ingresso
                 {
                     EventoId = comprarIngressoDto.EventoId,
@@ -203,12 +201,12 @@ namespace GestaoEventos.API.Services
 
                 var ingressoSalvo = await _ingressoRepository.AddAsync(ingresso);
 
-                // Atualizar contador de ingressos vendidos
+                
                 evento.IngressosVendidos++;
                 evento.DataAtualizacao = DateTime.Now;
                 await _eventoRepository.UpdateAsync(evento);
 
-                // Buscar ingresso com evento para retorno
+                
                 var ingressoComEvento = await _ingressoRepository.GetIngressoComEventoAsync(ingressoSalvo.Id);
 
                 return new ResponseDto<IngressoDto>
@@ -378,7 +376,7 @@ namespace GestaoEventos.API.Services
                 DataDevolucao = ingresso.DataDevolucao,
                 MotivoDevolucao = ingresso.MotivoDevolucao,
 
-                // ✅ Adiciona o mapeamento completo do evento
+                //  Adiciona o mapeamento completo do evento
                 Evento = ingresso.Evento != null
                     ? new EventoDto
                     {
@@ -407,21 +405,21 @@ namespace GestaoEventos.API.Services
             var font = new XFont("Verdana", 12, XFontStyle.Regular);
 
             string conteudo = $@"Ingresso #{ingresso.Id}
-Nome do Evento: {ingresso.Evento?.Nome}
-Local: {ingresso.Evento?.Local}
-Data do Evento: {ingresso.Evento?.DataEvento:dd/MM/yyyy HH:mm}
-Nome do Comprador: {ingresso.NomeComprador}
-Email: {ingresso.EmailComprador}
-Telefone: {ingresso.TelefoneComprador}
-Valor Pago: R$ {ingresso.ValorPago:F2}
-Data da Compra: {ingresso.DataCompra:dd/MM/yyyy HH:mm}";
+                    Nome do Evento: {ingresso.Evento?.Nome}
+                    Local: {ingresso.Evento?.Local}
+                    Data do Evento: {ingresso.Evento?.DataEvento:dd/MM/yyyy HH:mm}
+                    Nome do Comprador: {ingresso.NomeComprador}
+                    Email: {ingresso.EmailComprador}
+                    Telefone: {ingresso.TelefoneComprador}
+                    Valor Pago: R$ {ingresso.ValorPago:F2}
+                    Data da Compra: {ingresso.DataCompra:dd/MM/yyyy HH:mm}";
 
-            // Divide o texto em linhas
+            
             var linhas = conteudo.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
             double x = 40;
             double y = 40;
-            double lineHeight = font.GetHeight() + 4; // Altura da linha + espaçamento
+            double lineHeight = font.GetHeight() + 4; 
 
             foreach (var linha in linhas)
             {

@@ -7,6 +7,6 @@
         public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
         public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
         public string Papel { get; set; } = string.Empty;
-        public string NomeUsuario { get; set; } = string.Empty; // <<< NOVO CAMPO
+        public string NomeUsuario { get; set; } = string.Empty;
     }
 }

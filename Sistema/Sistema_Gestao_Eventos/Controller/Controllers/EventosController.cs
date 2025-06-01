@@ -18,10 +18,6 @@ namespace GestaoEventos.API.Controllers
             _logger = logger;
         }
 
-        /// <summary>
-        /// Busca todos os eventos
-        /// </summary>
-        /// <returns>Lista de eventos</returns>
         [HttpGet]
         [ProducesResponseType(typeof(ResponseDto<IEnumerable<EventoDto>>), 200)]
         [ProducesResponseType(500)]
@@ -37,11 +33,6 @@ namespace GestaoEventos.API.Controllers
             return StatusCode(500, resultado);
         }
 
-        /// <summary>
-        /// Busca evento por ID
-        /// </summary>
-        /// <param name="id">ID do evento</param>
-        /// <returns>Evento encontrado</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ResponseDto<EventoDto>), 200)]
         [ProducesResponseType(404)]
@@ -61,10 +52,6 @@ namespace GestaoEventos.API.Controllers
             return StatusCode(500, resultado);
         }
 
-        /// <summary>
-        /// Busca eventos ativos
-        /// </summary>
-        /// <returns>Lista de eventos ativos</returns>
         [HttpGet("ativos")]
         [ProducesResponseType(typeof(ResponseDto<IEnumerable<EventoDto>>), 200)]
         [ProducesResponseType(500)]
@@ -80,10 +67,6 @@ namespace GestaoEventos.API.Controllers
             return StatusCode(500, resultado);
         }
 
-        /// <summary>
-        /// Busca eventos com ingressos disponíveis
-        /// </summary>
-        /// <returns>Lista de eventos com ingressos disponíveis</returns>
         [HttpGet("disponiveis")]
         [ProducesResponseType(typeof(ResponseDto<IEnumerable<EventoDto>>), 200)]
         [ProducesResponseType(500)]
@@ -99,11 +82,6 @@ namespace GestaoEventos.API.Controllers
             return StatusCode(500, resultado);
         }
 
-        /// <summary>
-        /// Cria um novo evento
-        /// </summary>
-        /// <param name="criarEventoDto">Dados do evento</param>
-        /// <returns>Evento criado</returns>
         [HttpPost]
         [ProducesResponseType(typeof(ResponseDto<EventoDto>), 201)]
         [ProducesResponseType(400)]
@@ -133,12 +111,6 @@ namespace GestaoEventos.API.Controllers
             return StatusCode(500, resultado);
         }
 
-        /// <summary>
-        /// Atualiza um evento existente
-        /// </summary>
-        /// <param name="id">ID do evento</param>
-        /// <param name="atualizarEventoDto">Dados atualizados</param>
-        /// <returns>Evento atualizado</returns>
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(ResponseDto<EventoDto>), 200)]
         [ProducesResponseType(400)]
@@ -172,11 +144,6 @@ namespace GestaoEventos.API.Controllers
             return StatusCode(500, resultado);
         }
 
-        /// <summary>
-        /// Deleta um evento
-        /// </summary>
-        /// <param name="id">ID do evento</param>
-        /// <returns>Confirmação da exclusão</returns>
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(ResponseDto<bool>), 200)]
         [ProducesResponseType(400)]

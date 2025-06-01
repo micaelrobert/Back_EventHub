@@ -2,9 +2,7 @@
 
 namespace GestaoEventos.API.Repositories
 {
-    /// <summary>
-    /// Interface específica para repositório de eventos
-    /// </summary>
+  
     public interface IEventoRepository : IRepository<Evento>
     {
         Task<IEnumerable<Evento>> GetEventosAtivosAsync();

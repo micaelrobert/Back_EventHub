@@ -4,9 +4,7 @@ using GestaoEventos.API.Models;
 
 namespace GestaoEventos.API.Repositories
 {
-    /// <summary>
-    /// Repositório específico para ingressos
-    /// </summary>
+ 
     public class IngressoRepository : Repository<Ingresso>, IIngressoRepository
     {
         public IngressoRepository(EventosContext context) : base(context)

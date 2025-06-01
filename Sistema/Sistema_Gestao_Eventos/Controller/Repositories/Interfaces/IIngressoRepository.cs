@@ -8,6 +8,6 @@ namespace GestaoEventos.API.Repositories
         Task<IEnumerable<Ingresso>> GetIngressosPorEmailAsync(string email);
         Task<IEnumerable<Ingresso>> GetIngressosAtivosAsync();
         Task<Ingresso?> GetIngressoComEventoAsync(int id);
-        Task<IEnumerable<Ingresso>> GetTodosComEventoAsync(); // <-- ADICIONADO
+        Task<IEnumerable<Ingresso>> GetTodosComEventoAsync(); 
     }
 }

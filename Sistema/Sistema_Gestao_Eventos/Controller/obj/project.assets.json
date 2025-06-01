@@ -1583,11 +1583,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\micae\\Desktop\\EventHub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\GestaoEventos.API.csproj",
+      "projectUniqueName": "C:\\Users\\micae\\Desktop\\Back_Event_Hub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\GestaoEventos.API.csproj",
       "projectName": "GestaoEventos.API",
-      "projectPath": "C:\\Users\\micae\\Desktop\\EventHub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\GestaoEventos.API.csproj",
+      "projectPath": "C:\\Users\\micae\\Desktop\\Back_Event_Hub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\GestaoEventos.API.csproj",
       "packagesPath": "C:\\Users\\micae\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\micae\\Desktop\\EventHub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\obj\\",
+      "outputPath": "C:\\Users\\micae\\Desktop\\Back_Event_Hub\\Sistema\\Sistema_Gestao_Eventos\\Controller\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

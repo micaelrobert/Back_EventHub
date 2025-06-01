@@ -4,9 +4,7 @@ using GestaoEventos.API.Models;
 
 namespace GestaoEventos.API.Repositories
 {
-    /// <summary>
-    /// Repositório específico para eventos
-    /// </summary>
+
     public class EventoRepository : Repository<Evento>, IEventoRepository
     {
         public EventoRepository(EventosContext context) : base(context)

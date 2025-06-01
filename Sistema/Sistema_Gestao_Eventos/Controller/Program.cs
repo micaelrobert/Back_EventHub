@@ -1,21 +1,18 @@
-// Usings necessários
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using GestaoEventos.API.Data;
 using GestaoEventos.API.Repositories;
- // Verifique se este é o namespace correto para IEventoRepository
 using GestaoEventos.API.Services;
-using GestaoEventos.API.Services.Interfaces;     // Verifique se este é o namespace correto para IEventoService
-using GestaoEventos.API.Models;                 // Para o modelo Usuario
-using GestaoEventos.API.Helpers;                // Para o PasswordHasher
-using Microsoft.Extensions.Logging;             // Para ILogger no bloco de seed do admin
+using GestaoEventos.API.Services.Interfaces;
+using GestaoEventos.API.Models;
+using GestaoEventos.API.Helpers;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
-// Configuração de CORS
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
@@ -32,7 +29,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Registro de Dependências
 builder.Services.AddDbContext<EventosContext>(options =>
     options.UseInMemoryDatabase("EventosDb"));
 
@@ -44,7 +40,6 @@ builder.Services.AddScoped<IIngressoService, IngressoService>();
 builder.Services.AddScoped<IPdfService, PdfService>();
 
 
-// Configuração de Autenticação JWT
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -69,22 +64,18 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-// Bloco para criar o usuário admin programaticamente na inicialização
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     try
     {
         var context = services.GetRequiredService<EventosContext>();
-        // context.Database.EnsureCreated(); // Útil para InMemory, mas o UseInMemoryDatabase já faz isso.
-        // Para BD real, use context.Database.Migrate();
 
         if (!context.Usuarios.Any(u => u.Email == "admin@eventhub.com"))
         {
             PasswordHasher.CreatePasswordHash("admin123", out byte[] hash, out byte[] salt);
             context.Usuarios.Add(new Usuario
             {
-                // Id será gerado automaticamente pelo EF Core para InMemory se não especificado
                 Email = "admin@eventhub.com",
                 PasswordHash = hash,
                 PasswordSalt = salt,
@@ -100,12 +91,11 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        var logger = services.GetRequiredService<ILogger<Program>>(); // Log para a classe Program
+        var logger = services.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "Ocorreu um erro ao tentar semear o usuário admin.");
     }
 }
 
-// Configure o pipeline de requisições HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -115,7 +105,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 
-// Middlewares de Autenticação e Autorização (ordem importante)
 app.UseAuthentication();
 app.UseAuthorization();
 

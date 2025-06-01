@@ -6,13 +6,13 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using GestaoEventos.API.Data;
 using GestaoEventos.API.Models;
-using GestaoEventos.API.DTO.Login; // Assumindo que RegistroRequestDto e LoginResponseDto estão aqui
-using GestaoEventos.API.DTO;       // Para ResponseDto<T>
+using GestaoEventos.API.DTO.Login;
+using GestaoEventos.API.DTO;
 using GestaoEventos.API.Helpers;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
-using System.Linq; // Para SelectMany e ToList
-using System.Collections.Generic; // Para List<Claim>
+using System.Linq;
+using System.Collections.Generic;
 
 namespace GestaoEventos.API.Controllers
 {
@@ -60,7 +60,7 @@ namespace GestaoEventos.API.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
                 new Claim(ClaimTypes.Email, usuario.Email),
-                new Claim(ClaimTypes.Name, usuario.NomeUsuario), // <<< ADICIONADO NomeUsuario às claims
+                new Claim(ClaimTypes.Name, usuario.NomeUsuario),
                 new Claim(ClaimTypes.Role, usuario.Papel)
             };
 
@@ -87,7 +87,7 @@ namespace GestaoEventos.API.Controllers
                     Token = tokenString,
                     Email = usuario.Email,
                     Papel = usuario.Papel,
-                    NomeUsuario = usuario.NomeUsuario, // <<< ADICIONADO NomeUsuario à resposta
+                    NomeUsuario = usuario.NomeUsuario,
                     Expiracao = tokenDescriptor.Expires ?? DateTime.UtcNow.AddHours(8)
                 }
             });
@@ -117,7 +117,6 @@ namespace GestaoEventos.API.Controllers
                 return BadRequest(new ResponseDto<object> { Sucesso = false, Mensagem = "Este email já está cadastrado." });
             }
 
-            // Verificação se NomeUsuario já existe
             var usuarioExistenteNome = await _context.Usuarios.AnyAsync(u => u.NomeUsuario.ToLower() == registroRequest.NomeUsuario.ToLower());
             if (usuarioExistenteNome)
             {
@@ -130,7 +129,7 @@ namespace GestaoEventos.API.Controllers
             var novoUsuario = new Usuario
             {
                 Email = registroRequest.Email.ToLower(),
-                NomeUsuario = registroRequest.NomeUsuario, // <<< NomeUsuario sendo atribuído
+                NomeUsuario = registroRequest.NomeUsuario,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
                 Papel = "Comum"

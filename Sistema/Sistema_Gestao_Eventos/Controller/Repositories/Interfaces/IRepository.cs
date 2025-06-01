@@ -2,9 +2,7 @@
 
 namespace GestaoEventos.API.Repositories
 {
-    /// <summary>
-    /// Interface genérica para repositórios
-    /// </summary>
+
     public interface IRepository<T> where T : class
     {
         Task<T?> GetByIdAsync(int id);

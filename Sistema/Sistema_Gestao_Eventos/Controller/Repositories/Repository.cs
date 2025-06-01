@@ -4,9 +4,7 @@ using System.Linq.Expressions;
 
 namespace GestaoEventos.API.Repositories
 {
-    /// <summary>
-    /// Implementação genérica do repositório
-    /// </summary>
+   
     public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly EventosContext _context;

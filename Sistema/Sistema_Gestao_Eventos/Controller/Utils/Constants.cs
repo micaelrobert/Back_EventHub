@@ -1,8 +1,6 @@
 ﻿namespace GestaoEventos.API.Utils
 {
-    /// <summary>
-    /// Constantes da aplicação
-    /// </summary>
+  
     public static class Constants
     {
         public static class Messages
